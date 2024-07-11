@@ -22,11 +22,14 @@
             font-size: 15px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid black;
         }
 
-        th, td {
+        th,
+        td {
             text-align: left;
             padding: 5px;
         }
@@ -94,16 +97,20 @@
         .isi {
             padding: 10px;
         }
-        .w-10{
+
+        .w-10 {
             width: 10%;
         }
-        .w-20{
+
+        .w-20 {
             width: 20%;
         }
-        .w-40{
+
+        .w-40 {
             width: 40%;
         }
-        .w-50{
+
+        .w-50 {
             width: 50%;
         }
     </style>
@@ -111,55 +118,55 @@
 
 <body>
     <div class="header">
-    <div class="logo" style="margin-right: 30px; margin-top: -25px; padding: 0;">
-        {{-- <img class="pemko" src="https://i.imgur.com/Fs00trU.png" style="width: 120px;"> --}}
+        <div class="logo" style="margin-right: 30px; margin-top: -25px; padding: 0;">
+            {{-- <img class="pemko" src="https://i.imgur.com/Fs00trU.png" style="width: 120px;"> --}}
+        </div>
+        <div class="headtext">
+            <h3 style="margin: 0px;">DFPKEL2Market </h3>
+            <p style="margin: 0px;">Jalan Jauh Banget</p>
+            <p style="margin: 0px;">Telp. 0823 2345 2793</p>
+        </div>
     </div>
-    <div class="headtext">
-        <h3 style="margin: 0px;">Cattle Market </h3>
-        <p style="margin: 0px;">Jalan Jauh Banget</p>
-        <p style="margin: 0px;">Telp. 0823 2345 2793</p>
-    </div>
-</div>
     <div class="container">
         <hr style="margin-top:1px;">
         <div class="isi">
             <h2 style="text-align:center;">LAPORAN PRODUCT</h2>
             <table>
-            <thead>
-                <tr>
-                    <th style="text-align:center;" class="w-10">ID</th>
-                    <th style="text-align:center;" class="w-40">Name</th>
-                    <th style="text-align:center;" class="w-50">Description</th>
-                    <th style="text-align:center;" class="w-50">Price</th>
-                    <th style="text-align:center;" class="w-10">Qty</th>
-                    <th style="text-align:center;" class="w-20">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data['products'] as $product)
-                <tr>
-                    <td>{{$product->id}}</td>
-                    <td >{{$product->title}}</td>
-                    <td>{{$product->description}}</td>
-                    <td>Rp {{number_format($product->price)}}</td>
-                    <td>{{$product->qty}}</td>
-                    <td style="text-align:center;">
-                        @if ($product->status == 1)
-                        Active
-                        @else
-                        Inactive
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" class="w-10">ID</th>
+                        <th style="text-align:center;" class="w-40">Name</th>
+                        <th style="text-align:center;" class="w-50">Description</th>
+                        <th style="text-align:center;" class="w-50">Price</th>
+                        <th style="text-align:center;" class="w-10">Qty</th>
+                        <th style="text-align:center;" class="w-20">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data['products'] as $product)
+                        <tr>
+                            <td>{{$product->id}}</td>
+                            <td>{{$product->title}}</td>
+                            <td>{{$product->description}}</td>
+                            <td>Rp {{number_format($product->price)}}</td>
+                            <td>{{$product->qty}}</td>
+                            <td style="text-align:center;">
+                                @if ($product->status == 1)
+                                    Active
+                                @else
+                                    Inactive
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
             <br>
             <br>
             <br>
             <div class="ttd">
                 <p style="margin:0px"> Budi, {{ $data['now'] }}</p>
-                <h6 style="margin:0px">Cattle Market</h6>
+                <h6 style="margin:0px">DFPKEL2Market</h6>
                 <br>
                 <br>
                 <br>
