@@ -6,8 +6,6 @@
         data-bs-interval="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <!-- <img src="images/carousel-1.jpg" class="d-block w-100" alt=""> -->
-
                 <picture>
                     <source media="(min-width: 800px)" srcset="{{ asset('front-assets/images/carousel-1.jpg') }}" />
                     <img src="{{ asset('front-assets/images/carousel-1.jpg') }}" alt="" />
@@ -23,7 +21,6 @@
                 </div>
             </div>
             <div class="carousel-item">
-
                 <picture>
                     <source media="(max-width: 799px)" srcset="{{ asset('front-assets/images/carousel-2-m.jpg') }}" />
                     <source media="(min-width: 800px)" srcset="{{ asset('front-assets/images/carousel-2.jpg') }}" />
@@ -40,8 +37,6 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <!-- <img src="images/carousel-3.jpg" class="d-block w-100" alt=""> -->
-
                 <picture>
                     <source media="(max-width: 799px)" srcset="{{ asset('front-assets/images/carousel-3-m.jpg') }}" />
                     <source media="(min-width: 800px)" srcset="{{ asset('front-assets/images/carousel-3.jpg') }}" />
@@ -76,7 +71,7 @@
             <div class="col-lg-3">
                 <div class="box shadow-lg">
                     <div class="fa icon fa-check text-primary m-0 mr-3"></div>
-                    <h2 class="font-weight-semi-bold m-0">Quality Product</h5>
+                    <h2 class="font-weight-semi-bold m-0">Quality Product</h2>
                 </div>
             </div>
             <div class="col-lg-3 ">
@@ -94,7 +89,7 @@
             <div class="col-lg-3 ">
                 <div class="box shadow-lg">
                     <div class="fa icon fa-phone-volume text-primary m-0 mr-3"></div>
-                    <h2 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    <h2 class="font-weight-semi-bold m-0">24/7 Support</h2>
                 </div>
             </div>
         </div>
@@ -115,12 +110,12 @@
                             <div class="product-image position-relative" style="height: 250px;">
                                 <a href="{{ route("front.product", $product->slug) }}" class="product-img">
 
-                                    {{-- <img class="card-img-top" src="images/product-1.jpg" alt=""> --}}
-
                                     @if (!empty($product->product_image))
-                                        <img class="card-img-top" src="{{ $product->product_image }}" />
+                                        <img class="card-img-top {{ $product->qty == 0 ? 'out-of-stock' : '' }}"
+                                            src="{{ $product->product_image }}" />
                                     @else
-                                        <img src="{{ asset('admin-assets/img/default-150x150.png') }}" />
+                                        <img class="card-img-top {{ $product->qty == 0 ? 'out-of-stock' : '' }}"
+                                            src="{{ asset('admin-assets/img/default-150x150.png') }}" />
                                     @endif
 
                                 </a>
@@ -147,13 +142,15 @@
                             </div>
                             <div class="card-body text-center mt-3">
                                 <a class="h6 link" href="{{ route("front.product", $product->slug) }}">{{ $product->title }}</a>
+                                <div class="stock mt-2">
+                                    <small>{{ $product->qty > 0 ? 'Sisa Stok: ' . $product->qty : 'Out of Stock' }}</small>
+                                </div>
                                 <div class="price mt-2">
-
-                                    <span class="h5"><strong> Rp {{ $product->price }}</strong></span>
+                                    <span class="h5"><strong> <span class="rupiah">{{ $product->price }}</span></strong></span>
                                     @if($product->compare_price > 0)
-                                        <span class="h6 text-underline"><del>Rp {{ $product->compare_price }}</del></span>
+                                        <span class="h6 text-underline"><del> <span
+                                                    class="rupiah">{{ $product->compare_price }}</span></del></span>
                                     @endif
-
                                 </div>
                             </div>
                         </div>
@@ -177,12 +174,12 @@
                             <div class="product-image position-relative" style="height: 250px;">
                                 <a href="{{ route("front.product", $product->slug) }}" class="product-img">
 
-                                    {{-- <img class="card-img-top" src="images/product-1.jpg" alt=""> --}}
-
                                     @if (!empty($product->product_image))
-                                        <img class="card-img-top" src="{{ $product->product_image }}" />
+                                        <img class="card-img-top {{ $product->qty == 0 ? 'out-of-stock' : '' }}"
+                                            src="{{ $product->product_image }}" />
                                     @else
-                                        <img src="{{ asset('admin-assets/img/default-150x150.png') }}" />
+                                        <img class="card-img-top {{ $product->qty == 0 ? 'out-of-stock' : '' }}"
+                                            src="{{ asset('admin-assets/img/default-150x150.png') }}" />
                                     @endif
 
                                 </a>
@@ -209,13 +206,15 @@
                             </div>
                             <div class="card-body text-center mt-3">
                                 <a class="h6 link" href="{{ route("front.product", $product->slug) }}">{{ $product->title }}</a>
+                                <div class="stock mt-2">
+                                    <small>{{ $product->qty > 0 ? 'In Stock: ' . $product->qty : 'Out of Stock' }}</small>
+                                </div>
                                 <div class="price mt-2">
-
-                                    <span class="h5"><strong> Rp {{ $product->price }}</strong></span>
+                                    <span class="h5"><strong> <span class="rupiah">{{ $product->price }}</span></strong></span>
                                     @if($product->compare_price > 0)
-                                        <span class="h6 text-underline"><del>Rp {{ $product->compare_price }}</del></span>
+                                        <span class="h6 text-underline"><del> <span
+                                                    class="rupiah">{{ $product->compare_price }}</span></del></span>
                                     @endif
-
                                 </div>
                             </div>
                         </div>
@@ -238,7 +237,6 @@
         });
     }
 
-
     function addToCart(id) {
         $.ajax({
             url: '{{ route("front.addToCart") }}',
@@ -248,18 +246,14 @@
             success: function (response) {
                 console.log(response);
                 if (response.status == true) {
-                    // Product added to the cart successfully, show a SweetAlert2 success popup
                     Swal.fire({
                         icon: 'success',
                         title: 'Added to Cart ',
                         html: response.message,
-                        showConfirmButton: false, // Remove the "OK" button
-                        timer: 1500 // Auto close after 1.5 seconds
+                        showConfirmButton: false,
+                        timer: 1500
                     });
-                    // You can also redirect to the cart page if needed
-                    // window.location.href = '{{ route("front.cart") }}';
                 } else {
-                    // Product is already added to the cart, show a SweetAlert2 info popup
                     Swal.fire({
                         icon: 'info',
                         title: 'Product Already in Cart',
@@ -281,16 +275,14 @@
             success: function (response) {
                 console.log(response);
                 if (response.status == true) {
-                    // Product added to the wishlist successfully, show a SweetAlert2 success popup
                     Swal.fire({
                         icon: 'success',
                         title: 'Added to Wishlist',
                         html: response.message,
-                        showConfirmButton: false, // Remove the "OK" button
-                        timer: 1500 // Auto close after 1.5 seconds
+                        showConfirmButton: false,
+                        timer: 1500
                     });
                 } else {
-                    // Product is already in the wishlist, show a SweetAlert2 info popup
                     Swal.fire({
                         icon: 'info',
                         title: 'Product Already in Wishlist',
@@ -303,5 +295,34 @@
         });
     }
 
+    // Function to format number as Rupiah
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.toString().replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp ' + rupiah : '');
+    }
+
+    // Apply the formatRupiah function to all elements with the class 'rupiah'
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.rupiah').forEach(function (element) {
+            element.textContent = formatRupiah(element.textContent, 'Rp');
+        });
+    });
 </script>
+
+<style>
+    .out-of-stock {
+        opacity: 0.5;
+    }
+</style>
 @endsection
