@@ -122,7 +122,7 @@
             {{-- <img class="pemko" src="https://i.imgur.com/Fs00trU.png" style="width: 120px;"> --}}
         </div>
         <div class="headtext">
-            <h3 style="margin: 0px;">DFPKEL2Market </h3>
+            <h3 style="margin: 0px;">Krayu AdminMarket </h3>
             <p style="margin: 0px;">Jalan Jauh Banget</p>
             <p style="margin: 0px;">Telp. 0823 2345 2793</p>
         </div>
@@ -166,7 +166,7 @@
             <br>
             <div class="ttd">
                 <p style="margin:0px"> Budi, {{ $data['now'] }}</p>
-                <h6 style="margin:0px">DFPKEL2Market</h6>
+                <h6 style="margin:0px">Krayu AdminMarket</h6>
                 <br>
                 <br>
                 <br>

@@ -48,8 +48,8 @@ use App\Http\Controllers\PaymentCallbackController;
 
 // });
 
-Route::get('/',[FrontController::class,'index'])->name('front.home');
-Route::get('/shop/{categorySlug?}/{subCategory?}',[ShopController::class,'index'])->name('front.shop');
+// Route::get('/',[FrontController::class,'index'])->name('front.home');
+// Route::get('/shop/{categorySlug?}/{subCategory?}',[ShopController::class,'index'])->name('front.shop');
 Route::get('/product/{slug}',[ShopController::class,'product'])->name('front.product');
 Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.addToCart');
@@ -57,22 +57,22 @@ Route::post('/update-cart',[CartController::class,'updateCart'])->name('front.up
 Route::post('/delete-item',[CartController::class,'deleteItem'])->name('front.deleteItem.cart');
 Route::get('/get-cart-item-count', [CartController::class,'getCartItemCount'])->name('front.getCartItemCount');
 
-Route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
-Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processCheckout');
-Route::get('/thanks/{orderId}',[CartController::class,'thankyou'])->name('front.thankyou');
-Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive'])->name('payments.midtrans-notification');
-Route::post('/get-order-summary',[CartController::class,'getOrderSummary'])->name('front.getOrderSummary');
-Route::post('/apply-discount',[CartController::class,'applyDiscount'])->name('front.applyDiscount');
-Route::post('/remove-discount',[CartController::class,'removeCoupon'])->name('front.removeCoupon');
-Route::post('/add-to-wishlist',[FrontController::class,'addToWishlist'])->name('front.addToWishlist');
-Route::get('/page/{slug}',[FrontController::class,'page'])->name('front.page');
-Route::post('/send-contact-email',[FrontController::class,'sendContactEmail'])->name('front.sendContactEmail');
+// Route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
+// Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processCheckout');
+// Route::get('/thanks/{orderId}',[CartController::class,'thankyou'])->name('front.thankyou');
+// Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive'])->name('payments.midtrans-notification');
+// Route::post('/get-order-summary',[CartController::class,'getOrderSummary'])->name('front.getOrderSummary');
+// Route::post('/apply-discount',[CartController::class,'applyDiscount'])->name('front.applyDiscount');
+// Route::post('/remove-discount',[CartController::class,'removeCoupon'])->name('front.removeCoupon');
+// Route::post('/add-to-wishlist',[FrontController::class,'addToWishlist'])->name('front.addToWishlist');
+// Route::get('/page/{slug}',[FrontController::class,'page'])->name('front.page');
+// Route::post('/send-contact-email',[FrontController::class,'sendContactEmail'])->name('front.sendContactEmail');
 
-Route::get('/forgot-password',[AuthController::class,'forgotPassword'])->name('front.forgotPassword');
-Route::post('/process-forgot-password',[AuthController::class,'processForgotPassword'])->name('front.processForgotPassword');
-Route::get('/reset-password/{token}',[AuthController::class,'resetPassword'])->name('front.resetPassword');
-Route::post('/process-reset-password',[AuthController::class,'processResetPassword'])->name('front.processResetPassword');
-Route::post('/save-rating/{productId}', [ShopController::class,'saveRating'])->name('front.saveRating');
+// Route::get('/forgot-password',[AuthController::class,'forgotPassword'])->name('front.forgotPassword');
+// Route::post('/process-forgot-password',[AuthController::class,'processForgotPassword'])->name('front.processForgotPassword');
+// Route::get('/reset-password/{token}',[AuthController::class,'resetPassword'])->name('front.resetPassword');
+// Route::post('/process-reset-password',[AuthController::class,'processResetPassword'])->name('front.processResetPassword');
+// Route::post('/save-rating/{productId}', [ShopController::class,'saveRating'])->name('front.saveRating');
 
 Route::group(['prefix' => 'account'],function(){
     Route::group(['middleware' => 'guest'],function(){

@@ -172,7 +172,7 @@
             <tr>
                 <td>
                     <div class="box-text">
-                        <p>DFPKEL2Market</p>
+                        <p>Krayu AdminMarket</p>
                         <p>Jalan Raya Brawijaya University,</p>
                         <p>Malang Jawa Timur, 201239</p>
                         <p>Contact : 0812421424121</p>

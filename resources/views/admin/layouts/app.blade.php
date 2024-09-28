@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<title>DFPKEL2Market</title>
+	<title>Krayu Admin</title>
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="icon" href="{{ asset('admin-assets/img/AdminLTELogo.png') }}" type="image/png" />
 
@@ -153,7 +153,7 @@
 		<!-- /.content-wrapper -->
 		<footer class="main-footer">
 
-			<strong>Copyright &copy; 2024 DFPKEL2Market All rights reserved.
+			<strong>Copyright &copy; 2024 Krayu AdminMarket All rights reserved.
 		</footer>
 
 	</div>
